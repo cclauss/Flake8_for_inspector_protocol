@@ -1,6 +1,5 @@
 # Flake8 testing of inspector protocol
-
-# Testing chromium/deps/inspector_protocol using flake8
+## Testing chromium/deps/inspector_protocol using flake8
 ### Run flake8 on subdirectories of Tribler/Core
 
 [flake8](http://flake8.pycqa.org) testing of https://chromium.googlesource.com/deps/inspector_protocol on Python 3.7.1
