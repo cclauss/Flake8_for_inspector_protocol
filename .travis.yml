@@ -1,0 +1,32 @@
+group: travis_latest
+dist: xenial  # required for Python >= 3.7 (travis-ci/travis-ci#9069)
+language: python
+cache: pip
+python:
+  - 2.7
+  #- 3.4
+  #- 3.5
+  #- 3.6
+  - 3.7
+matrix:
+  allow_failures:
+    - python: 2.7  # legacy Python is optional
+install:
+  #- pip install -r requirements.txt
+  - pip install flake8  # pytest  # add other testing frameworks later
+before_script:
+  - REPO=inspector_protocol
+  - URL=git clone https://chromium.googlesource.com/deps/inspector_protocol
+  - echo ; echo -n "flake8 testing of ${URL} on " ; python -V
+  - git clone --depth=50 ${URL} ~/${REPO}  # --branch=master
+  - cd ~/${REPO}
+script:
+  - echo stop the build if there are Python syntax errors or undefined names
+  - echo ; echo -n "flake8 testing of ${URL}/${DIR} on " ; python -V
+  - time flake8 ${DIR} --count --select=E901,E999,F821,F822,F823 --show-source --statistics
+  - echo exit-zero treats all errors as warnings.  The GitHub editor is 127 chars wide
+  - time flake8 ${DIR} --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+  #- true  # pytest --capture=sys
+notifications:
+  on_success: change
+  on_failure: change  # `always` will be the setting once code changes slow down
