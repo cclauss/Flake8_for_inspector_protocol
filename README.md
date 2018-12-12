@@ -1,2 +1,30 @@
-# Flake8_for_inspector_protocol
-git clone https://chromium.googlesource.com/deps/inspector_protocol
+# Flake8 testing of inspector protocol
+
+# Testing chromium/deps/inspector_protocol using flake8
+### Run flake8 on subdirectories of Tribler/Core
+
+[flake8](http://flake8.pycqa.org) testing of https://chromium.googlesource.com/deps/inspector_protocol on Python 3.7.1
+
+$ __git clone https://chromium.googlesource.com/deps/inspector_protocol__
+$ __flake8 . --count --select=E901,E999,F821,F822,F823 --show-source --statistics__
+```
+./check_protocol_compatibility.py:478:46: E999 SyntaxError: invalid syntax
+            print "  Public changes since %s:" % version
+                                             ^
+./code_generator.py:43:18: F821 undefined name 'xrange'
+        for i in xrange(len(keys)):
+                 ^
+./pdl.py:162:51: E999 SyntaxError: invalid syntax
+        print 'Error in %s:%s, illegal token: \t%s' % (file_name, i, line)
+                                                  ^
+2     E999 SyntaxError: invalid syntax
+1     F821 undefined name 'xrange'
+3
+```
+
+__E901,E999,F821,F822,F823__ are the "_showstopper_" [flake8](http://flake8.pycqa.org) issues that can halt the runtime with a SyntaxError, NameError, etc. Most other flake8 issues are merely "style violations" -- useful for readability but they do not effect runtime safety.
+* F821: undefined name `name`
+* F822: undefined name `name` in `__all__`
+* F823: local variable name referenced before assignment
+* E901: SyntaxError or IndentationError
+* E999: SyntaxError -- failed to compile a file into an Abstract Syntax Tree
