@@ -5,7 +5,7 @@
 * $ `git clone https://chromium.googlesource.com/deps/inspector_protocol
 * $ `flake8 . --count --select=E901,E999,F821,F822,F823 --show-source --statistics
 
-Current results: https://travis-ci.com/cclauss/Flake8_for_inspector_protocol
+Current Travis CI results: https://travis-ci.com/cclauss/Flake8_for_inspector_protocol
 
 [flake8](http://flake8.pycqa.org) testing of https://chromium.googlesource.com/deps/inspector_protocol on Python 3.7.1
 
