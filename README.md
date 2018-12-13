@@ -1,4 +1,6 @@
 # Flake8 testing of inspector protocol
+### print() is a function in Python 3
+### xrange() was removed in Python 3 in favor of a reworked version of range()
 
 * $ `git clone https://chromium.googlesource.com/deps/inspector_protocol
 * $ `flake8 . --count --select=E901,E999,F821,F822,F823 --show-source --statist`ics`
