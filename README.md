@@ -2,6 +2,10 @@
 ### print() is a function in Python 3
 ### xrange() was removed in Python 3 in favor of a reworked version of range()
 
+The bug reports on chromium.org:
+* https://bugs.chromium.org/p/chromium/issues/detail?id=914950
+* https://bugs.chromium.org/p/v8/issues/detail?id=8594
+
 * $ `git clone https://chromium.googlesource.com/deps/inspector_protocol
 * $ `flake8 . --count --select=E901,E999,F821,F822,F823 --show-source --statistics
 
